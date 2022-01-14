@@ -65,4 +65,4 @@ if __name__ == "__main__":
         T.root.data = i
         print(i, ": ", algo(T.root, 1, 1))
 
-    # print(iterative_algo(T.root, 1, 9))
+    print(iterative_algo(T.root, 1, 9))

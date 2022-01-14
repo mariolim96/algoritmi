@@ -62,7 +62,7 @@ if __name__ == "__main__":
     T = BinarySearchTree()
     T.insert(11)
     T.insert(32)
-    # T.insert(4)
+    T.insert(4)
 
     print(algo(T.root, 10))
     print(iterative(T.root, 10))

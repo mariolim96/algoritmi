@@ -317,6 +317,14 @@ class Graph(object):
                     L_prime.append(u)
         L.stack = L_prime
 
+    def modifyArray(self, L):
+        L_prime = []
+        for v in L:
+            for u in self.nodeList:
+                if u.name == v.name:
+                    L_prime.append(u)
+        L = L_prime
+
 
 if __name__ == '__main__':
     # node1 = Node("1")

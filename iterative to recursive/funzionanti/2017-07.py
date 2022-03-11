@@ -22,11 +22,11 @@ def algo(T: Node, h):
 def iterative(T: Node, h):
     stackT = Stack()
     stackS = Stack()
-    stackD = Stack()
     lastT = None
     ret = retval = -1
     while T is not None or not stackT.isEmpty():
         if T is not None:
+            ret = -1
             s = d = 0
             if T.left is not None:
                 stackT.push(T)
@@ -51,7 +51,7 @@ def iterative(T: Node, h):
             T = stackT.top()
             h = h-1
             if lastT is not T.right and T.right is not None:  # destro non nullo ma vengo da sinistra
-                s = ret
+                s = retval
                 stackS.push(s)
                 T = T.right
                 h = h+1
@@ -73,10 +73,9 @@ def iterative(T: Node, h):
                     d = 0
                     if s == 0 and d == 0:
                         ret = h
-                        lastT = T
                     else:
                         ret = s+d
-                        lastT = T
+                    lastT = T
                     retval = ret
                     T = None
                     stackT.pop()
@@ -91,8 +90,6 @@ if __name__ == '__main__':
     T.insert(2)
     T.insert(6)
     T.insert(8)
-    T.insert(1)
-    T.insert(4)
-    T.insert(9)
+
     print(algo(T.root, 0))
     print(iterative(T.root, 0))

@@ -43,13 +43,11 @@ def dfs(G, source: Node, arrive: Node, colors):
     return False
 
 
-
-
-def algo(G, C):
+def algo(G: Graph, C: dict, u: Node, v: Node):
     L = Stack()
     L = G.dfs1(L)
     Gt = G.traspose()
     Gt.cfcDfs(L)
-    
-    #controllo dizionaro e ritorno
+
+    # controllo dizionaro e ritorno
     return Gt.cfc[u.name][0] == Gt.cfc[v.name][0]

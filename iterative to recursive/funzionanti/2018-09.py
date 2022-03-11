@@ -1,5 +1,6 @@
 from datastructure import Stack
-#sembra funzionare
+# sembra funzionare
+
 
 def algo(A, i, j, k):
     ret = -1
@@ -74,6 +75,6 @@ def iterative_algo(A, i, j, k):
 
 
 if __name__ == '__main__':
-    A = [1, 2, 3]
+    A = [1, 2, 3, 5, 9]
     print(algo(A, 0, len(A)-1, 3))
     print(iterative_algo(A, 0, len(A)-1, 3))

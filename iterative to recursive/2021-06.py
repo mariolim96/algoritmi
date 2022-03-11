@@ -1,6 +1,8 @@
 from random import randint
 
-## aggiustare variabile  nell'else
+# aggiustare variabile  nell'else
+
+
 class Stack:
 
     def __init__(self):
@@ -24,21 +26,23 @@ class Stack:
         return len(self.stack)
 
 
-def ALGORITMO(A: list, i: int, j: int, x: bool):
+def algo(A: list, i: int, j: int, x: bool):
     ret = 0
     if j-i >= 1:
         y = randint(0, 10) % 2
         if (x == 1):
-            ret = ALGORITMO(A, (i+j)//2 + 1,  j,     y)
+            ret = algo(A, (i+j)//2 + 1,  j,     y)
             if ret % 2 == 0:
-                ret = ALGORITMO(A,  i,  (i+j)//2, 1 - y)
+                ret = algo(A,  i,  (i+j)//2, 1 - y)
         else:
-            ret = ALGORITMO(A,  i,  (i+j)//2,   y)
+            ret = algo(A,  i,  (i+j)//2,   y)
             if ret % 2 == 1:
-                ret = ret+ALGORITMO(A, (i+j)//2 + 1,  j, 1 - y)
+                ret = ret+algo(A, (i+j)//2 + 1,  j, 1 - y)
             else:
                 ret = A[i]
     return ret
+
+
 
 
 def iterative_algo(A, i, j, x):
@@ -53,7 +57,7 @@ def iterative_algo(A, i, j, x):
     while j-i >= 1 or not stackX.isEmpty():
         if j-i >= 1:
             ret = 0
-            y = 1
+            y = randint(0, 10) % 2
             if (x == 1):
                 stackI.push(i)
                 i = (i+j)//2 + 1
@@ -120,5 +124,5 @@ def iterative_algo(A, i, j, x):
 if __name__ == '__main__':
     A = [i+1 for i in range(2)]
     print(A)
-    # print(ALGORITMO(A, 0, len(A)-1, 1))
+    # print(algo(A, 0, len(A)-1, 1))
     print(iterative_algo(A, 0, len(A)-1, 1))

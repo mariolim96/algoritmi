@@ -31,3 +31,15 @@ class array(object):
     def successore(self, elemento):
         if elemento in self.array:
             return self.array[self.array.index(elemento)+1]
+
+    def ricerca_binaria(self, elemento, l=0, r):
+        if p < r:
+            q = (l+r)//2
+            if self.array[q] == elemento:
+                return array[q]
+            else:
+                if self.array[q] < elemento:
+                    return self.ricerca_binaria(elemento, q+1, r)
+                else:
+                    return self.ricerca_binaria(elemento, l, q-1)
+        return p

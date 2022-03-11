@@ -10,7 +10,9 @@
 # 4) verificare che col1 e col2  dei vertici di a siono uguali a aggiungerli ad A'
 from datastructure import Graph, Node
 
-#dovrebbe essere giusto
+# giusto
+
+
 def algo(G: Graph, A: list, u: Node, v: Node):
     col1 = {}
     col2 = {}

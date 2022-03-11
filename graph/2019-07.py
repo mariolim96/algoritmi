@@ -5,7 +5,9 @@
 #  V1 intersected V2= void set
 # v belong to V1  <=>  for each edge (v,w) in E , w belongs to V2
 from datastructure import Graph, Node, Queue, color
-#da rivedere ma dovrebbe essere giusto
+# giusto
+
+
 def bipartite(G: Graph):
     if G.nodeCount % 2 == 0:
         return bfs(G, G.nodeList[0])

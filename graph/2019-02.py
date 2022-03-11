@@ -8,7 +8,7 @@
 # 3. se la bfs raggiunge un nodo A, allora la distanza del nodo A dal nodo s è minore di k restituisco False
 # 4. altrimenti restituisco True
 
-#dovrebbe essere giusto
+#giusto #
 from datastructure import Graph, Node
 
 

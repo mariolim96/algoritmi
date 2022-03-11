@@ -2,6 +2,8 @@
 # verificare in tempo lineare che :
 # 1) nel Grafo G1 ogni percorso massimale finito che parte da u non passa per v
 # 2) nel Grafo G2 tutti i percorsi infiniti che partono da u devono passare per v
+# un percorso si dice massimale se non puo essere ulteriormente esteso , quindi se e on infinito o finiscen in un vertice pozzo
+from datastructure import Graph, Node, Stack, color
 
 
 def dfs(self, s: Node, colors: dict):
@@ -31,10 +33,10 @@ def algo(G1: Graph, G2: Graph, u: Node, v: Node):
     color = {}
     init(G1, color)
     dfs(G1, u, color)
-    if color[v] == color.black:
+    if color[v] == color.black:  # questo e sbagliato
         return False
     init(G2, color)
-    color[v] = color.black
+    color[v] = color.black  # questo e giusto
     if dfscycle(G2, u, color):
         return False
     return True

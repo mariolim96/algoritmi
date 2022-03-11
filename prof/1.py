@@ -1,38 +1,37 @@
 from datastructure import Stack
+# p=0       r=3    q1=2   q2=1
+# [1, 2, 3, 4]
 
-# qualche problema nella variabile ret ma funziona abbastanza bene
-def algo(A: list, p: int, r: int):
+
+def algo(A, p, r, k=1):
     ret = 0
-    if p <= r:
-        if p == r:
-            ret = A[p]
-        else:
-            q1 = (p + 2*r) // 3
-            ret = algo(A, p, q1)
-            q2 = (2*p + r) // 3
-            ret = ret+algo(A, q1+1, q2)
-            ret = ret+algo(A, q2+1, r)
+    z = 0
+    if(p <= r):
+        q = (p + r) // 2
+        if(k == A[q]):
+            z = A[q]
+            ret = z+algo(A, q+1, r, k)
+        if(ret > 0):
+            ret = ret + algo(A, p, q-1, k)
     return ret
 
 
 def iterative_algo(A, p, r):
     stackRet = Stack()
     stackR = Stack()
-    stackP = Stack()
     last = None
     retval = None
     q1 = q2 = None
-    while(p <= r or not stackR.isEmpty()):
+    while(p <= r or stackR.isEmpty() is not None):
 
         if p <= r:
-            ret = 0
             if p == r:
                 ret = A[p]
                 retval = ret
                 last = r
                 r = p-1
             else:
-                retval = ret
+                ret = 0
                 q1 = (p + 2*r) // 3
                 stackR.push(r)
                 r = q1
@@ -43,27 +42,25 @@ def iterative_algo(A, p, r):
                 ret = retval
                 q2 = (2*p + r) // 3
                 stackRet.push(ret)
-                stackP.push(p)
                 p = q1+1
                 r = q2
             else:
-                ret = stackRet.pop()
                 if last != r:
-                    p = stackP.pop()
+                    ret = stackRet.pop()
                     q2 = (2*p + r) // 3
-                    ret = ret + retval  # errore ret , si salva il valore precedente
+                    ret = ret + retval
                     p = q2+1
                     stackRet.push(ret)
                 else:
+                    ret = stackRet.pop()
                     ret = ret+retval
-                    retval = ret
                     p = r+1
                     last = r
                     stackR.pop()
     return retval
 
 
-A = [1, 2]
+A = [1]
 print("ecco")
 print(algo(A, 0, len(A)-1))
-print(iterative_algo(A, 0, len(A)-1))
+#print(iterative_algo(A, 0, len(A)-1))

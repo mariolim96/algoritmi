@@ -1,15 +1,16 @@
 # dato G e un array A C V di G e un vertice v,
 # calcoli Z C V che rispetta la condizione :
-# zEZ <==> esiste un percorso tra z e v che passa per qualche A,
+# z E Z <==> esiste un percorso tra z e v che passa per qualche A,
 # ossia z->A->v
 from datastructure import Graph, Node, color
 
+# fatta bene
 # faccio partire una dfs che parte da v e trovo tutti i nodi di a che raggiunge
 # a questo punto creo un vertice W e aggiungo i nodi black di A
 # faccio partire una seconda dfs  che parte da W e trova tutti i nodi z
 
 
-def algo(G: Graph, A: list, v: Node):
+def algo(G: Graph, A: list, v: Node, z: Node):
     color1 = {}
     color2 = {}
     Gt = G.transpose()
@@ -18,12 +19,13 @@ def algo(G: Graph, A: list, v: Node):
     Gt.init()
     Gt.dfsColor(v, color1)
     for i in At:
+        # qua trovo tutti i nodi aEA che raggiungono v
         if i.visited == color.black:
             w.adjacenciesList.append(i)
-    Gt.init()
-    G.dfsColor(w, color2)
+    G.init()
+    G.dfsColor(z, color2)  # verifico se esiste un nodo di a che raggiunge z
     Z = set()
-    for k in Gt.nodeList:
+    for k in A:
         if color2[k.name] == color.black:
             Z.add(k)
     return Z

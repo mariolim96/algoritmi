@@ -219,8 +219,7 @@ class Graph(object):
         for v in source.adjacenciesList:
             if v.visited == color.white:
                 v.predecessor = source.name
-                ret = self.aciclicgraph(self, v)
-                if ret:
+                if self.aciclicgraph(self, v):
                     return True
             elif v.visited == color.grey:
                 return True

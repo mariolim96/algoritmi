@@ -1,6 +1,8 @@
 from datastructure import Stack
 
-#funziona
+# problemi alla variabile di ritorno
+# funziona a tratti probabile si deve aggiustare il caso x=y
+
 
 def algo(A, x, y, k):
     val = 0
@@ -38,21 +40,21 @@ def iterative_algo(A, x, y, k):
             y = stackY.top()
             z = stackZ.top()
             val = stackVal.top()
-            if lastY != z+1:  # ritorniamo dalla prima
+            if lastY != y:  # ritorniamo dalla prima
                 a = retval
                 if a > val:
                     stackA.push(a)
                     x = z+1
                 else:
                     b = a+val
-                val = val+a+b
-                # ritorno
-                retval = val
-                lastY = y
-                stackY.pop()
-                stackZ.pop()
-                stackVal.pop()
-                x = y+1
+                    val = val+a+b
+                    # ritorno
+                    retval = val
+                    lastY = y
+                    stackY.pop()
+                    stackZ.pop()
+                    stackVal.pop()
+                    x = y+1
             else:
                 a = stackA.pop()
                 b = retval
@@ -69,6 +71,6 @@ def iterative_algo(A, x, y, k):
 
 
 if __name__ == "__main__":
-    A = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+    A = [3, 3, 3]
     print(algo(A, 0, len(A)-1, 3))
     print(iterative_algo(A, 0, len(A)-1, 3))

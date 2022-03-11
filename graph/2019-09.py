@@ -1,5 +1,7 @@
+
+
 # nessuna soluzione al momento
-from datastructure import Graph, Node, Stack
+from datastructure import Graph, Node, Stack, color
 
 # In which case, some nodes z can be in the same connected component as u and v, yet not part
 #  of any path from u to v. That is, there is a path from u to z, and a path from z to v, and
@@ -7,8 +9,27 @@ from datastructure import Graph, Node, Stack
 # https://link.springer.com/chapter/10.1007/978-3-540-24749-4_31
 # controllo
 
+# buono
 
-def algo(G: Graph, u: Node, v: Node):
+
+def ALGO(G: Graph, A, u, v):
+    G.init()
+    c1 = c2 = {}
+    Z = set()
+    DFS_MOD(G, u, c1)
+    # trovo tutti i vertici raggiungibili da u
+    G_prime = G.traspose()
+    DFS_MOD(G_prime, v, c2)
+    # trovo tutti i vertici che raggiungono v nel grafo di partenza
+    Z = []
+    for v in A:
+        # allora questo vertice non si trova su un percorso da u a v
+    IF(c1[v]=color.white or c2[v]=color.white):
+        Z = add(Z, v)
+
+
+
+def algo1(G: Graph, u: Node, v: Node):
 
     # now u and v are in the same strongly connected component
     L = Stack()
@@ -24,16 +45,3 @@ def algo(G: Graph, u: Node, v: Node):
             z.append(v)
     return z
 
-
-def ALGO(G, A, u, v):
-    INIT(G)
-    c1=c2=[]
-    DFS_MOD(G, u, c1)
-    # trovo tutti i vertici raggiungibili da u
-    G_prime = TRASPOSTO(G)
-    DFS_MOD(G_prime, v, c2)
-    # trovo tutti i vertici che raggiungono v nel grafo di partenza
-    Z = []
-    for v in A:
-    IF(c1[v]=bianco or c2[v]=bianco):  # allora questo vertice non si trova su un percorso da u a v
-        Z = add(Z, v)

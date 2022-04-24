@@ -14,14 +14,18 @@ class Lista(object):
         self.node = node
 
     def insert(self, data):
-        if self.node is not None and self.node.data < data:
+        if self.node is not None and self.node.data > data:
             tmp = self.node
             p = None
-            while(tpm is not None and tmp.data < data):
+            while(tpm is not None and tmp.data <= data):
                 p = tmp
                 tmp = tmp.next
             newNode = Node(data)
             p.next = newNode
+        else:
+            tmp = Node(data)
+            tmp.next = self.node
+            self.node = tmp
 
     @staticmethod
     def insert_recursive(lista, data):
@@ -73,4 +77,3 @@ class Lista(object):
         while(L is not None and L.data < data):
             p = L
             L = L.next
-        
